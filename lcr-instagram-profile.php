@@ -29,12 +29,13 @@ class InstagramProfile extends WP_Widget {
 	 * @param array $instance
 	 */
 	public function widget( $args, $instance ) {
-		echo $args['before_widget'];
-		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
-		}
 
+		//the widget will be shown just if a user ID and a client ID is informed
 		if($instance['userid'] && $instance['clientid'] && is_numeric($instance['userid'])){
+			echo $args['before_widget'];
+			if ( ! empty( $instance['title'] ) ) {
+				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
+			}
 
 			$url = "https://api.instagram.com/v1/users/".$instance['userid']."?client_id=".$instance['clientid'];
 			$response = get_headers($url);
@@ -56,17 +57,18 @@ class InstagramProfile extends WP_Widget {
 								/<?php echo $dados->username;?>
 							</a>
 						</h4>
-						<div><?php echo $dados->counts->media;?> fotos</div>
+						<div><?php echo $dados->counts->media;?> pics</div>
+						<div><?php echo $dados->counts->follows;?> follows</div>
+						<div><?php echo $dados->counts->followed_by;?> followers</div>
 						<p><?php echo $dados->bio;?></p>
 					</div>
 				<?php
 			}else{
-				echo "É necessário informar o userID e o clientID  válidos para que o widget funcione corretamente";
+				echo "Check the configuration informed";
 			}
-		}else{
-			echo "É necessário informar o userID e o clientID para que o widget funcione corretamente";
+			echo $args['after_widget'];
 		}
-		echo $args['after_widget'];
+
 	}
 
 	/**

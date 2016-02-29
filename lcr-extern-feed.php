@@ -17,7 +17,7 @@ class ExternFeed extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'extern-feed', // Base ID
-			__('Feed interativo', 'text_domain'), // Name
+			__('Extern Feed by LCR', 'text_domain'), // Name
 			array( 'description' => __( 'Extern news feed widget. Input an extern feed url and the amount of news you want to show on your widget.', 'text_domain' ), ) // Args
 		);
 	}
@@ -54,7 +54,7 @@ class ExternFeed extends WP_Widget {
 		$show_date     = 1;
 
 		if ( !$rss->get_item_quantity() ) {
-			echo '<ul><li>' . __( 'O feed de notícias está fora do ar.' ) . '</li></ul>';
+			echo '<ul><li>' . __( 'No result.' ) . '</li></ul>';
 			$rss->__destruct();
 			unset($rss);
 			return;
