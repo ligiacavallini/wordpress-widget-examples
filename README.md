@@ -1,7 +1,7 @@
 
 #Two wordpress widget examples.
 
-You can use both as a plugin. Just put on your wp-content/plugins folder and activate on your admin panel. No css added.
+You can use both as plugin. Just put on your wp-content/plugins folder and activate on your admin panel. No css added.
 
 
 ##lcr-extern-feed
