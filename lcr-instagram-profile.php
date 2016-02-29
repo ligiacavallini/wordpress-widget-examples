@@ -16,8 +16,8 @@ class InstagramProfile extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-			'instagrams_widget', // Base ID
-			__( 'Instagram profile by LCR', 'lcr' ), // Name
+			'instagrams_widget',
+			__( 'Instagram profile by LCR', 'lcr' ),
 			array( 'description' => __( 'Widget with your instagram profile. User ID and Client ID is necessary and it must be of a public account.', 'lcr' ), )
 		);
 	}

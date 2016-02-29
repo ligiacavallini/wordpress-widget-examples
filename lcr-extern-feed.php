@@ -16,9 +16,9 @@ class ExternFeed extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct(
-			'extern-feed', // Base ID
-			__('Extern Feed by LCR', 'text_domain'), // Name
-			array( 'description' => __( 'Extern news feed widget. Input an extern feed url and the amount of news you want to show on your widget.', 'text_domain' ), ) // Args
+			'extern-feed',
+			__('Extern Feed by LCR', 'text_domain'),
+			array( 'description' => __( 'Extern news feed widget. Input an extern feed url and the amount of news you want to show on your widget.', 'text_domain' ), )
 		);
 	}
 
@@ -73,7 +73,6 @@ class ExternFeed extends WP_Widget {
 			$desc = str_replace( array("\n", "\r"), ' ', esc_attr( strip_tags( @html_entity_decode( $item->get_description(), ENT_QUOTES, get_option('blog_charset') ) ) ) );
 			$excerpt = wp_html_excerpt( $desc, 360 );
 
-			// Append ellipsis. Change existing [...] to [&hellip;].
 			if ( '[...]' == substr( $excerpt, -5 ) )
 				$excerpt = substr( $excerpt, 0, -5 ) . '[&hellip;]';
 			elseif ( '[&hellip;]' != substr( $excerpt, -10 ) && $desc != $excerpt )
